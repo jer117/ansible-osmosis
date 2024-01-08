@@ -212,7 +212,7 @@ external_address = ""
 seeds = ""
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "f5fb80fff15981c72f9084470696f53d9150ada7@31.220.75.138:32656,66338a18a755a0c780b011f012ff142ebaa8fa56@44.236.174.26:26656,fab89524993355aeb4bb0ab27baced36795dbdaa@46.4.15.110:26656,196a62249b9b969234441bfd3ea20991fea5fbf5@164.68.114.65:29656,9c26260b0148376d2343c4c8c2e2bd7f3f498cd4@35.162.231.114:26656,d21b103628b0d5d824bbe81b809d8dc457bd2059@osmosis-testnet-peer.itrocket.net:16656,5d6654636550b573af0b2f9759e820957b937138@65.108.246.54:26656,c01d1a8d5f3061aa1d4b4252c14ca8e157d8d6ed@52.59.198.193:26656,a05d2b29ed4f0baf07b2f029c9b34c8941181cfc@95.217.198.186:33656,2b4b7c4ab14774b500ce8c6f2971cd2ea8c0a470@148.251.2.19:55786,62406fde48bc2cf7a3c4e87498d090612ae5c843@38.242.197.247:29656,8aaec5fd35e2c452a0507bad2db1e0ca79d73bb9@142.132.202.87:26656,55efbad053f4736bac313102539b5f641d1b9c69@178.128.232.111:26656,a6090cdf3ff4bdc428ba89c4f622ec1b3490e338@18.143.71.236:26656,a918d08544b5f4e0a9eb20bf91f343eb71b6d5ee@164.90.181.99:26656,bc3375e504910ebc83fe9425e20d892222df535b@134.255.244.234:26656"
+persistent_peers = "{{ tendermint_persistent_peers | join(',') }}"
 
 # UPNP port forwarding
 upnp = false
@@ -339,9 +339,9 @@ enable = true
 #
 # For Cosmos SDK-based chains, trust_period should usually be about 2/3 of the unbonding time (~2
 # weeks) during which they can be financially punished (slashed) for misbehavior.
-rpc_servers = "https://osmosis-testnet-rpc.itrocket.net:443,https://osmosis-testnet-rpc.itrocket.net:443"
-trust_height = 2920109
-trust_hash = "E20CD674320943E3A6566633C695B7D543469488DFA1F6F70A35AB97A8CB3894"
+rpc_servers = "https://osmosis-testnet-rpc.polkachu.com,https://rpc.testnet.osmosis.zone"
+trust_height = 0
+trust_hash = ""
 trust_period = "168h0m0s"
 
 # Time to spend discovering snapshots before initiating a restore.
