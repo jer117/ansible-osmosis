@@ -1,0 +1,31 @@
+---
+networks:
+  testnet:
+    chain_id: osmo-test-5
+    minimum_gas_prices: "0.025uosmo"
+    consensus_key_prefix: osmovalcons
+    account_key_prefix: osmos
+    genesis_url: https://raw.githubusercontent.com/osmosis-labs/testnets/main/testnets/osmo-test-5/genesis/genesis.json
+    genesis_checksum: sha256:8f84b50c0ad65582c9c52126cd33443c9f2541436ea4c525106ed9b58f7c9ef9
+    genesis_is_archive_file: false
+    grpc_web_enable: false
+    public_rpc_servers:
+      - https://rpc.testnet.osmosis.zone/
+      - https://osmosis-testnet-rpc.polkachu.com/
+    seed_nodes_list:
+      - f440c4980357d8b56db87ddd50f06bd551f1319a@5.78.98.19:26656
+      - ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:12556
+    persistent_peers:
+      - bbbf8483aaec66e03797ab6253bce5d47ffb6353@63.229.234.75:26656
+      - 739b1d8379aec33d83857faff499d47366fb050d@208.88.251.50:26656
+      - cd832550b8d07cb2047ce436f7d3ddc46f6685b9@136.243.94.41:26656
+      - 3bf60b08fd75e897d5d35ffebbc74836a80056ae@35.91.170.114:26656
+      - 3343f4c061d9910110518b047464f060636a1139@167.71.37.30:26656
+      - c496ed7aec3d91b61cca6c80711537da1cf235f6@65.109.158.85:26656
+      - a5d7d7f1591a99c29ae2cd652e8c4423228adcd5@15.235.115.54:26656
+      - 11ae47d8860e16ff5e6b8294583ae930c0f6cc54@206.125.34.196:26656
+      - 54afb3354de6c6ca0ebf0e9a975b804fdad0f417@34.198.224.121:26656
+      - e79d69600b2bae5c219ae9845c746251515fc2a0@142.93.175.50:26656
+      - 34436af6f3397f8890969305f5c0d4e0032fc7c9@38.109.200.33:26656
+      - 2774970f8aca1a258bb66149c571cc609f93dae8@52.40.140.206:26656
+      - 22d58b9368ba3f8738858d8982702ed94b9c7776@54.149.234.124:26656
