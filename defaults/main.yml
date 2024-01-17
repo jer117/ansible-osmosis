@@ -5,7 +5,7 @@
 tendermint_docker_container_name: "osmosis"
 tendermint_binary_name: "osmosisd"
 
-tendermint_image: "osmolabs/osmosis:21.0.0-a-rc4-testnet-alpine"
+tendermint_image: "osmolabs/osmosis:22.0.0-rc0-alpine"
 kiln_monitoring_image: "ghcr.io/kilnfi/cosmos-validator-watcher:v0.8.1"
 
 network: "testnet"
