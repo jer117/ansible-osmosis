@@ -122,7 +122,8 @@
     memory_swap: "{{ tendermint_docker_memory_limit }}"
     restart_policy: unless-stopped
     restart: "{{ cfg_changed | bool }}"
-    network_mode: host
+    networks:
+      - name: "osmosis-validator-net"
     ulimits:
       - nofile:65535:65535
     networks_cli_compatible: true
