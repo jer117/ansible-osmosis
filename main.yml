@@ -14,6 +14,11 @@
       ansible.builtin.include_vars: defaults/main.yml
       tags: [always]
 
+    - name: Create Docker network
+      docker_network:
+        name: osmosis-validator-net
+        state: present
+
     - name: Include task osmosis
       include_tasks: tasks/osmosis.yml
       tags: osmosis

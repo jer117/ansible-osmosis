@@ -5,11 +5,10 @@
     image: "{{ kiln_monitoring_image }}"
     state: started
     auto_remove: false  # Ensure the container is not removed after it stops
-    network_mode: host
+    networks:
+      - name: "osmosis-validator-net"
     command: "--node https://osmosis-testnet-rpc.polkachu.com:443 \
-              --node http://localhost:26657 \
+              --node http://osmosis:26657 \
+              --webhook-url https://api.telegram.org/bot5769122001:AAGE3VQW0jCLVAk27dRMOWYFXvb7dR6mhTw/sendMessage?chat_id=-1001831879971&text=Foss_Pepe_stride_validator_is_jailed
               --validator 8E9C454C7483D0C05A93B6C005B50C47958913B1:nodes.club"
-    env:
-      SERVICE_SCHEME: http
-      SERVICE_HOST: "localhost"
     detach: true
