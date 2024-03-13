@@ -5,8 +5,8 @@
 tendermint_docker_container_name: "osmosis"
 tendermint_binary_name: "osmosisd"
 
-tendermint_image: "osmolabs/osmosis:22.0.0-rc0-alpine"
-kiln_monitoring_image: "ghcr.io/kilnfi/cosmos-validator-watcher:v0.8.1"
+tendermint_image: "osmolabs/osmosis:23.0.0-rc1-alpine"
+tenderduty_monitoring_image: "ghcr.io/blockpane/tenderduty:latest"
 
 network: "testnet"
 
@@ -121,6 +121,9 @@ tendermint_grpc_port: 9090
 tendermint_grpc_web_port: 9091
 tendermint_prometheus_port: 26660
 
+tenderduty_prometheus_port: 28686
+tenderduty_dashboard_port: 8888
+
 # PEX
 pex_enabled: "true"
 
@@ -138,4 +141,8 @@ tendermint_docker_memory_limit: "{{ (ansible_memory_mb.real.total * 0.8) | round
 validator_docker_ports:
   - "{{ tendermint_p2p_port }}:{{ tendermint_p2p_port }}"
   - 127.0.0.1:{{ tendermint_prometheus_port }}:{{ tendermint_prometheus_port }}
+
+tenderduty_docker_ports:
+  - "{{ tenderduty_prometheus_port }}:{{ tenderduty_prometheus_port }}"
+  - "{{ tenderduty_dashboard_port }}:{{ tenderduty_dashboard_port }}"
 

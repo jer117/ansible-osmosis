@@ -8,6 +8,7 @@
     mode: "0755"
   with_items:
     - "{{ tendermint_host_config_mount }}"
+    - "{{ tendermint_host_config_mount }}/tenderduty"
     - "{{ tendermint_host_data_mount }}"
     - "{{ tendermint_host_wasm_mount }}"
     - "{{ tendermint_host_keys_mount }}"

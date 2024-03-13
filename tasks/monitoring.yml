@@ -1,14 +1,37 @@
 ---
-- name: Task Run Cosmos Validator Watcher Container
+- name: Task copy config.yml
+  become_user: root
+  become: true
+  template:
+    src: config.yml
+    dest: "{{ tendermint_host_config_mount }}/config.yml"
+    force: true
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  with_items:
+    - config.yml
+
+# Validator docker ports
+- name: Task Set tenderduty docker ports
+  set_fact:
+    docker_tenderduty_ports: "{{ tenderduty_docker_ports }}"
+
+- name: Task Run Tenderduty Validator Watcher Container
   docker_container:
-    name: cosmos-validator-watcher
-    image: "{{ kiln_monitoring_image }}"
+    name: tenderduty
+    image: "{{ tenderduty_monitoring_image }}"
     state: started
+    restart_policy: unless-stopped
     auto_remove: false  # Ensure the container is not removed after it stops
     networks:
       - name: "osmosis-validator-net"
-    command: "--node https://osmosis-testnet-rpc.polkachu.com:443 \
-              --node http://osmosis:26657 \
-              --webhook-url https://api.telegram.org/bot5769122001:AAGE3VQW0jCLVAk27dRMOWYFXvb7dR6mhTw/sendMessage?chat_id=-1001831879971&text=Foss_Pepe_stride_validator_is_jailed
-              --validator 8E9C454C7483D0C05A93B6C005B50C47958913B1:nodes.club"
+    ulimits:
+      - nofile:65535:65535
+    networks_cli_compatible: true
+    command: ""
     detach: true
+    ports: "{{ docker_tenderduty_ports }}"
+    volumes:
+      - "{{ tendermint_host_config_mount }}/tenderduty:/var/lib/tenderduty"
+      - "{{ tendermint_host_config_mount }}/config.yml:/var/lib/tenderduty/config.yml"
