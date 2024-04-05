@@ -41,7 +41,7 @@ telegram:
   # API key ... talk to @BotFather
   api_key: ''
   # The group ID for the chat where messages will be sent. Google how to find this, will include better info later.
-  channel: ""
+  channel: "-1002101924871"
 
 # Slack settings
 slack:
@@ -111,7 +111,7 @@ chains:
       telegram:
         enabled: yes
         api_key: "" # uses default if blank
-        channel: "" # uses default if blank
+        channel: "-1002101924871" # uses default if blank
 
       # Slack settings
       slack:
