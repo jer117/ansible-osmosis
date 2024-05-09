@@ -5,35 +5,39 @@
 tendermint_docker_container_name: "osmosis"
 tendermint_binary_name: "osmosisd"
 
-tendermint_image: "osmolabs/osmosis:24.0.0-rc0-alpine"
+tendermint_image: "osmolabs/osmosis:24.0.4-alpine"
 tenderduty_monitoring_image: "ghcr.io/blockpane/tenderduty:latest"
 
-network: "testnet"
+container_watchdog_container_name: "watchdog"
+
+container_watchdog_docker_image: "jer117/watchdog-container:v0.0.3-osmosis"
+
+network: "mainnet"
 
 # Custom flag for tendermint command
 custom_tendermint_flag: ""
 
 # host / docker mounts (override if neccessary)
-tendermint_host_config_mount: /root/.osmosisd/config
-tendermint_host_data_mount: /data/osmosis
-tendermint_host_wasm_mount: /data/osmosis/wasm
-tendermint_host_keys_mount: /root/.osmosisd/keys
+tendermint_host_config_mount: /home/slcl_admin/.osmosisd/config
+tendermint_host_data_mount: /home/slcl_admin/data/osmosis
+tendermint_host_wasm_mount: /home/slcl_admin/data/osmosis/wasm
+tendermint_host_keys_mount: /home/slcl_admin/.osmosisd/keys
 
 tendermint_docker_config_mount: /osmosis/.osmosisd/config/
 tendermint_docker_data_mount: /osmosis/.osmosisd/data/
 tendermint_docker_wasm_mount: /osmosis/.osmosisd/wasm/
-tendermint_docker_keys_mount: /root/.osmosisd/keys
+tendermint_docker_keys_mount: /slcl_admin/.osmosisd/keys
 
 # Tendermint vars
-genesis_file: "{{ networks.testnet.genesis_file | default('') }}"
-genesis_url: "{{ networks.testnet.genesis_url | default('') }}"
-genesis_is_archive_file: "{{ networks.testnet.genesis_is_archive_file | default(false) }}"
-genesis_checksum: "{{ networks.testnet.genesis_checksum | default('') }}"
-chain_id: "{{ networks.testnet.chain_id }}"
-account_key_prefix: "{{ networks.testnet.account_key_prefix }}"
-consensus_key_prefix: "{{ networks.testnet.consensus_key_prefix }}"
+genesis_file: "{{ networks.mainnet.genesis_file | default('') }}"
+genesis_url: "{{ networks.mainnet.genesis_url | default('') }}"
+genesis_is_archive_file: "{{ networks.mainnet.genesis_is_archive_file | default(false) }}"
+genesis_checksum: "{{ networks.mainnet.genesis_checksum | default('') }}"
+chain_id: "{{ networks.mainnet.chain_id }}"
+account_key_prefix: "{{ networks.mainnet.account_key_prefix }}"
+consensus_key_prefix: "{{ networks.mainnet.consensus_key_prefix }}"
 
-public_rpc_servers: "{{ networks.testnet.public_rpc_servers | default('') }}"
+public_rpc_servers: "{{ networks.mainnet.public_rpc_servers | default('') }}"
 skip_assert_invariants: "true"
 
 # Tendermint client config
@@ -52,17 +56,17 @@ app_api_jsonrpc_namespaces: eth,net,web3
 app_api_jsonrpc_namespaces_debug: eth,net,web3,debug
 
 # Tendermint config - base
-tendermint_minimum_gas_prices: "{{ networks.testnet.minimum_gas_prices }}"
-tendermint_max_tx_gas_wanted: "{{ networks.testnet.max_tx_gas_wanted | default('') }}"
+tendermint_minimum_gas_prices: "{{ networks.mainnet.minimum_gas_prices }}"
+tendermint_max_tx_gas_wanted: "{{ networks.mainnet.max_tx_gas_wanted | default('') }}"
 # Tendermint config - main
 tendermint_log_level: info
 tendermint_log_format: json
 tendermint_db_backend: goleveldb
 # Tendermint config - p2p
-tendermint_seed_nodes: "{{ networks.testnet.seed_nodes_list | default('') }}"
-tendermint_persistent_peers: "{{ networks.testnet.persistent_peers | default('') }}"
-tendermint_private_peer_ids: "{{ networks.testnet.private_peer_ids | default('') }}"
-tendermint_unconditional_peer_ids: "{{ networks.testnet.unconditional_peer_ids | default('') }}"
+tendermint_seed_nodes: "{{ networks.mainnet.seed_nodes_list | default('') }}"
+tendermint_persistent_peers: "{{ networks.mainnet.persistent_peers | default('') }}"
+tendermint_private_peer_ids: "{{ networks.mainnet.private_peer_ids | default('') }}"
+tendermint_unconditional_peer_ids: "{{ networks.mainnet.unconditional_peer_ids | default('') }}"
 tendermint_max_num_inbound_peers: 320
 tendermint_max_num_outbound_peers: 40
 tendermint_handshake_timeout: 10s

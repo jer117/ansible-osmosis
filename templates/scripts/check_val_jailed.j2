@@ -8,9 +8,9 @@ cmd=$(docker exec -i osmosis osmosisd query staking validator osmovaloper1u9q4h6
 
 if [[ $? -eq 0 ]]; then
    echo "osmosis validator not jailed!"
-   echo $(date -u) "validator not jailed" >> /root/val_jailed_log.txt
+   echo $(date -u) "validator not jailed" >> /slcl_admin/val_jailed_log.txt
 else
    echo "osmosis validator may be jailed!"
-   echo $(date -u) "Osmosis testnet validator is jailed!" >> /root/val_jailed_log.txt
+   echo $(date -u) "Osmosis mainnet validator is jailed!" >> /slcl_admin/val_jailed_log.txt
    curl -X POST -H 'Content-type: application/json' --data '{"text":"Osmosis validator may be jailed! (Query returned non-zero rc)\naddress: osmovaloper1u9q4h6sk7l3tkzh9skxx2ej95h6whzxy0w54gl" }' https://api.telegram.org/bot{ API_KEY }/sendMessage?chat_id=-1002101924871&text=Osmosis_validator_may_be_jailed!&reply_to_message_id=1026
 fi

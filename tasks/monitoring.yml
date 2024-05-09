@@ -1,13 +1,13 @@
 ---
 - name: Task copy config.yml
-  become_user: root
+  become_user: slcl_admin
   become: true
   template:
     src: config.yml
     dest: "{{ tendermint_host_config_mount }}/config.yml"
     force: true
-    owner: "root"
-    group: "root"
+    owner: "slcl_admin"
+    group: "slcl_admin"
     mode: "0755"
   with_items:
     - config.yml
