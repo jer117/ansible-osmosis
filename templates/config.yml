@@ -84,7 +84,7 @@ chains:
       # a downtime jail infraction. Should an alert be sent if a certain percentage of this window is exceeded?
       percentage_enabled: yes
       # What percentage should trigger the alert
-      percentage_missed: 1
+      percentage_missed: 0.1
       # Percentage Missed alert Pagerduty Severity
       percentage_priority: warning
 
