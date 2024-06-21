@@ -5,7 +5,7 @@
 tendermint_docker_container_name: "osmosis"
 tendermint_binary_name: "osmosisd"
 
-tendermint_image: "osmolabs/osmosis:25.1.0-alpine"
+tendermint_image: "osmolabs/osmosis:25.1.3-alpine"
 tenderduty_monitoring_image: "ghcr.io/blockpane/tenderduty:latest"
 
 container_watchdog_container_name: "watchdog"
